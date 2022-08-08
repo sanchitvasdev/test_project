@@ -1,0 +1,333 @@
+1. mkdir project1
+mkdir project2
+
+2. $ cd project1
+
+3. $ git checkout -b 'staging'
+Switched to a new branch 'staging'
+
+4. $ touch test1
+$ vim test1
+This is first commit.
+:wq
+
+$ git add .
+$ git commit -m 'First commit'
+[staging (root-commit) 72e3726] First commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 test1
+
+5. $ git remote add origin https://github.com/sanchitvasdev/test_project.git
+
+$ git push -u origin staging
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 226 bytes | 226.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/sanchitvasdev/test_project.git
+ * [new branch]      staging -> staging
+Branch 'staging' set up to track remote branch 'staging' from 'origin'.
+
+6. $ cd ../project2
+
+7. $ git clone https://github.com/sanchitvasdev/test_project.git
+Cloning into 'test_project'...
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Total 3 (delta 0), reused 3 (delta 0), pack-reused 0
+Receiving objects: 100% (3/3), done.
+
+8. $ cd test_project
+
+9. $ vim test1
+This is second commit.
+:wq
+
+10. $ git add .
+$ git status
+On branch staging
+Your branch is up to date with 'origin/staging'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   test1
+
+$ git commit -m 'Second commit'
+[staging eccc172] Second commit
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+$ git push -u origin staging
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Writing objects: 100% (3/3), 258 bytes | 258.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/sanchitvasdev/test_project.git
+   72e3726..eccc172  staging -> staging
+Branch 'staging' set up to track remote branch 'staging' from 'origin'.
+
+11. $ cd ../project1
+
+12. Already on staging branch
+
+13. $ vim test1
+This is third commit.
+:wq
+
+14. $ git add .
+$ git commit -m 'Third commit'
+[staging 4fa8d79] Third commit
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+$ git push -u origin staging
+To https://github.com/sanchitvasdev/test_project.git
+ ! [rejected]        staging -> staging (fetch first)
+error: failed to push some refs to 'https://github.com/sanchitvasdev/test_project.git'
+
+This happened because we had different data locally and we didn't pull first and then push. We pushed directly.
+
+15. $ git switch master
+Switched to branch 'master'
+
+16. $ git merge staging
+
+17. $ git branch testing
+$ git branch
+* master
+  staging
+  testing
+$ git switch testing
+Switched to branch 'testing'
+
+18. $ vim test1
+A is an alphabet
+:wq
+
+$ git add .
+$ git commit -m 'A alphabet'
+[testing c00ee7e] A alphabet
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+19. $ vim test1
+B is an alphabet
+:wq
+
+$ git add .
+$ git commit -m 'B alphabet'
+[testing 9f6fbf2] B alphabet
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+$ vim test1
+C is an alphabet
+:wq
+
+$ git add .
+$ git commit -m 'C alphabet'
+[testing 79d3e0d] C alphabet
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+$ vim test1
+D is an alphabet
+:wq
+
+$ git add .
+$ git commit -m 'D alphabet'
+[testing 5a2ced9] D alphabet
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+$ vim test1
+E is an alphabet
+:wq
+
+$ git add .
+$ git commit -m 'E alphabet'
+[testing 60d713a] E alphabet
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+$ vim test1
+F is an alphabet
+:wq
+
+$ git add .
+$ git commit -m 'F alphabet'
+[testing a92706c] F alphabet
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+$ vim test1
+G is an alphabet
+:wq
+
+$ git add .
+$ git commit -m 'G alphabet'
+[testing ff9f611] G alphabet
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+20. $ git push -u origin testing
+Enumerating objects: 27, done.
+Counting objects: 100% (27/27), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (9/9), done.
+Writing objects: 100% (27/27), 1.96 KiB | 333.00 KiB/s, done.
+Total 27 (delta 0), reused 0 (delta 0), pack-reused 0
+remote:
+remote: Create a pull request for 'testing' on GitHub by visiting:
+remote:      https://github.com/sanchitvasdev/test_project/pull/new/testing
+remote:
+To https://github.com/sanchitvasdev/test_project.git
+ * [new branch]      testing -> testing
+Branch 'testing' set up to track remote branch 'testing' from 'origin'.
+
+21. $ git checkout master
+Switched to branch 'master'
+
+22. $ vim test1
+1 is a number
+:wq
+
+$ git add .
+$ git commit -m '1 number'
+[master 7efc7f9] 1 number
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+23. $ vim test1
+2 is a number
+:wq
+
+$ git add .
+$ git commit -m '2 number'
+[master 57f246a] 2 number
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+$ vim test1
+3 is a number
+:wq
+
+$ git add .
+$ git commit -m '3 number'
+[master d564025] 3 number
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+$ vim test1
+4 is a number
+:wq
+
+$ git add .
+$ git commit -m '4 number'
+[master 2d6bd64] 4 number
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+$ vim test1
+5 is a number
+:wq
+
+$ git add .
+$ git commit -m '5 number'
+[master a9818ae] 5 number
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+$ vim test1
+6 is a number
+:wq
+
+$ git add .
+$ git commit -m '6 number'
+[master 50fb27e] 6 number
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+$ vim test1
+7 is a number
+:wq
+
+$ git add .
+$ git commit -m '7 number'
+[master cf7b949] 7 number
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+24. $ git push -u origin master
+Enumerating objects: 23, done.
+Counting objects: 100% (23/23), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (7/7), done.
+Writing objects: 100% (21/21), 1.50 KiB | 308.00 KiB/s, done.
+Total 21 (delta 0), reused 0 (delta 0), pack-reused 0
+remote:
+remote: Create a pull request for 'master' on GitHub by visiting:
+remote:      https://github.com/sanchitvasdev/test_project/pull/new/master
+remote:
+To https://github.com/sanchitvasdev/test_project.git
+ * [new branch]      master -> master
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+
+25. $ git rebase testing
+error: could not apply 7efc7f9... 1 number
+Resolve all conflicts manually, mark them as resolved with
+"git add/rm <conflicted_files>", then run "git rebase --continue".
+You can instead skip this commit: run "git rebase --skip".
+To abort and get back to the state before "git rebase", run "git rebase --abort".
+Could not apply 7efc7f9... 1 number
+Auto-merging test1
+CONFLICT (content): Merge conflict in test1
+
+Solved the conflict 
+$ git rebase testing
+Current branch master is up to date.
+
+26. $ cd ../project2
+
+27. $ git branch --all
+* staging
+  remotes/origin/HEAD -> origin/staging
+  remotes/origin/master
+  remotes/origin/staging
+  remotes/origin/testing
+
+
+28. $ git checkout master
+Switched to branch 'master'
+Your branch is up to date with 'origin/master'.
+
+29. $ git merge testing
+Auto-merging test1
+CONFLICT (content): Merge conflict in test1
+Automatic merge failed; fix conflicts and then commit the result.
+
+Solved the conflict by making the text in test1 file '1 is a number' in master branch.
+
+$ git merge testing
+Already up to date.
+
+30. In master branch.
+
+$ git log --pretty=oneline
+4e50e7032417f822ea237588203c685d84cae1e3 (HEAD -> master) to resolve conflict
+cf7b949e6ce944ea1df56fb244c07fdde15ac4b3 (origin/master) 7 number
+50fb27ebbc11f46164fc7bf97c1638e459c873b2 6 number
+a9818ae8d4ea6378ed0d3b9bd6a0071e03bb2906 5 number
+2d6bd64af673207f30cce613f0612dba4896f2ab 4 number
+d56402509ded589d203fac01c1d0c1d00b1447b7 3 number
+57f246aa0c7879846c019ab6430a31ef05fd4de3 2 number
+7efc7f9a9c91333e86d4e26cd79389680e21c7ab 1 number
+ff9f611b92fe45a16cef361fba61303a1fa9ec19 (origin/testing, testing) G alphabet
+a92706c350d24dbc8920dfe9ecbff03f7de25f7f F alphabet
+60d713ac85e99458fbe1295e0ab3168954be3cc7 E alphabet
+5a2ced9e64a9e124b0325b2ac9e4de57c8110f2c D alphabet
+79d3e0d040c9d39959eb9bc2f8633dc9f771d29c C alphabet
+9f6fbf28499ef6a693e3cc1c47386dc620a21f94 B alphabet
+c00ee7eddca3ca08859b6f5b22c1b3ad63d82e96 A alphabet
+4fa8d79148b09a3a47f384582f6a8007a479fd92 Third commit
+72e3726cfb0a0ee78f89792234cc45c37cbe56ab First commit
+
+In testing branch.
+
+$ git log --pretty=oneline
+ff9f611b92fe45a16cef361fba61303a1fa9ec19 (HEAD -> testing, origin/testing) G alphabet
+a92706c350d24dbc8920dfe9ecbff03f7de25f7f F alphabet
+60d713ac85e99458fbe1295e0ab3168954be3cc7 E alphabet
+5a2ced9e64a9e124b0325b2ac9e4de57c8110f2c D alphabet
+79d3e0d040c9d39959eb9bc2f8633dc9f771d29c C alphabet
+9f6fbf28499ef6a693e3cc1c47386dc620a21f94 B alphabet
+c00ee7eddca3ca08859b6f5b22c1b3ad63d82e96 A alphabet
+4fa8d79148b09a3a47f384582f6a8007a479fd92 Third commit
+72e3726cfb0a0ee78f89792234cc45c37cbe56ab First commit
+
+Difference between master and testing branches is that master contains both the commits of previous master branch and testing branch while tesing branch only contains its own commits.
+
